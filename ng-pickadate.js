@@ -89,10 +89,14 @@
         function updateValue(newValue) {
           if (newValue) {
             var date = (newValue instanceof Date) ? newValue : new Date(newValue);
-            element.pickadate('picker').set('select', date.getTime());
+            if(angular.isDefined(element.pickadate('picker'))) {
+              element.pickadate('picker').set('select', date.getTime());
+            }
             model.pickADate.assign(scope, date);
           } else {
-            element.pickadate('picker').clear();
+            if(angular.isDefined(element.pickadate('picker'))) {
+              element.pickadate('picker').clear();
+            }
             model.pickADate.assign(scope, null);
           }
         }
@@ -222,10 +226,14 @@
           if (newValue) {
             var date = (newValue instanceof Date) ? newValue : new Date(newValue);
             var totalMins = date.getHours() * 60 + date.getMinutes();
-            element.pickatime('picker').set('select', totalMins);
+            if(angular.isDefined(element.pickatime('picker'))) {
+              element.pickatime('picker').set('select', totalMins);
+            }
             model.pickATime.assign(scope, date);
           } else {
-            element.pickatime('picker').clear();
+            if(angular.isDefined(element.pickatime('picker'))) {
+              element.pickatime('picker').clear();
+            }
             model.pickATime.assign(scope, null);
           }
         }
